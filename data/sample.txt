@@ -1,0 +1,39 @@
+Retrieval-Augmented Generation (RAG) is a technique that combines retrieval of documents with generation using LLMs. It improves accuracy by grounding responses in external knowledge.
+Machine learning (ML) is a part of artificial intelligence (AI) where models learn patterns from data to make predictions or decisions.
+
+Key RAG concepts:
+- Retrieval: find the most relevant text chunks from a knowledge base (files, PDFs, databases, web pages).
+- Embeddings: convert text into vectors so similarity search can retrieve relevant chunks.
+- Vector store: stores embeddings (example: FAISS) and supports similarity search.
+- Generation: an LLM uses the retrieved context to answer; the model should cite/reflect the context rather than guess.
+
+Vector search basics:
+- Cosine similarity compares vector direction (common for text embeddings).
+- Chunking matters: smaller chunks improve precision, larger chunks improve recall.
+- Overlap between chunks reduces the chance of missing context across boundaries.
+
+Common RAG failure modes:
+- Hallucination: the model answers without support from the retrieved context.
+- Poor retrieval: wrong chunks retrieved due to bad embeddings, bad chunking, or a small/irrelevant knowledge base.
+- Context overflow: too much text is sent to the LLM, causing truncation or diluted relevance.
+
+Langfuse (observability) basics:
+- Traces group related operations (retrieval + LLM calls) for one user question.
+- Spans represent steps inside a trace (e.g., retrieval step, LLM generation step).
+- You can log inputs/outputs and measure latency and token usage to debug quality and cost.
+
+Groq LLM usage (high-level):
+- You send a prompt to an LLM model (e.g., Llama 3.1).
+- The response should be conditioned on the retrieved context for RAG.
+
+Mini glossary:
+- LLM: Large Language Model used for generating natural language.
+- Prompt: instructions + context you send to the LLM.
+- Temperature: controls randomness; lower values are more deterministic.
+
+Example Q&A you can ask from this document:
+- "What is RAG and why is it useful?"
+- "What is a vector store and why do we use FAISS?"
+- "What are common RAG failure modes?"
+- "What does Langfuse trace vs span mean?"
+
